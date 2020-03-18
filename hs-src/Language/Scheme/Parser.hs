@@ -47,6 +47,7 @@ module Language.Scheme.Parser
     ) where
 import Language.Scheme.Types
 import Control.Monad.Error
+import Control.Monad.Fail
 import Data.Array
 import qualified Data.ByteString as BS
 import qualified Data.Char as DC
@@ -319,7 +320,7 @@ parseEscapedChar = do
     _ -> return c
 
 -- |Parse a hexidecimal scalar
-parseHexScalar :: Monad m => String -> m Char
+parseHexScalar :: MonadFail m => String -> m Char
 parseHexScalar num = do
     let ns = Numeric.readHex num
     case ns of
