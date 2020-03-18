@@ -1,0 +1,9 @@
+resolver: lts-15.3
+
+packages:
+  - .
+  - extensions
+
+extra-deps:
+  - json-0.10
+  - knob-0.1.1
